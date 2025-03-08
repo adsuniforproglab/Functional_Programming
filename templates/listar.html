@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuários</title>
+    <link href="/static/css/style.css" rel="stylesheet" >
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'rel='stylesheet'> 
+</head>
+<body>
+    <main class="container2">
+        <h1>Lista de Usuários</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.nome }}</td>
+                
+                        <td>{{ usuario.email }}</td>
+                        <td>
+                            <a class="links" href="/editar/{{ usuario.id }}">Editar</a>
+                            <a class="links" href="/deletar/{{ usuario.id }}">Deletar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <a class="botao-cadastro" href="/">Cadastrar Novo Usuário</a>
+        
+    </main>
+</body>
+</html>
