@@ -103,21 +103,6 @@ python main.py
 
 4. Acesse o navegador em `http://localhost:5000`
 
-## Estrutura do Projeto
-
-```
-GRUD-UNIFOR/
-├── main.py              # Ponto de entrada da aplicação
-├── templates/           # Templates HTML
-│   ├── index.html
-│   └── ...
-├── static/              # Arquivos estáticos (CSS, JS)
-├── utils/               # Utilitários de programação funcional
-├── models.py            # Modelos de dados
-├── requirements.txt     # Dependências do projeto
-└── README.md            # Este arquivo
-```
-
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um issue ou enviar um pull request.
