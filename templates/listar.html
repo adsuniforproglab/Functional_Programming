@@ -1,37 +1,374 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">    
 <head>
     <title>Lista de Usuários</title>
     <link href="/static/css/style.css" rel="stylesheet" >
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'rel='stylesheet'> 
+    <style>
+        .code-container {
+            background-color: #282c34;
+            color: #abb2bf;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin-top: 10px;
+            display: none;
+            position: relative;
+            border: 1px solid #3e4451;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .code-title-bar {
+            background-color: #21252b;
+            padding: 8px 15px;
+            border-bottom: 1px solid #3e4451;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .code-title {
+            color: #e06c75;
+            font-weight: bold;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .code-content {
+            padding: 15px;
+            position: relative;
+            counter-reset: line;
+        }
+        
+        .code-line {
+            display: block;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 3.5em;
+        }
+        
+        .code-line::before {
+            counter-increment: line;
+            content: counter(line);
+            position: absolute;
+            left: 0;
+            color: #636d83;
+            text-align: right;
+            width: 2.5em;
+            padding-right: 1em;
+            border-right: 1px solid #3e4451;
+            user-select: none;
+        }
+        
+        .ver-codigo {
+            background-color: #4b5263;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .ver-codigo:hover {
+            background-color: #5c6370;
+        }
+        
+        .language-badge {
+            background-color: #61afef;
+            color: #282c34;
+            border-radius: 3px;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .keyword {
+            color: #c678dd;
+        }
+        
+        .string {
+            color: #98c379;
+        }
+        
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+        
+        .function {
+            color: #61afef;
+        }
+        
+        .operator {
+            color: #56b6c2;
+        }
+        
+        .number {
+            color: #d19a66;
+        }
+        
+        .parameter {
+            color: #e06c75;
+        }
+        
+        .type {
+            color: #e5c07b;
+        }
+    </style>
 </head>
 <body>
     <main class="container2">
         <h1>Lista de Usuários</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for usuario in usuarios %}
-                    <tr>
-                        <td>{{ usuario.nome }}</td>
-                
-                        <td>{{ usuario.email }}</td>
-                        <td>
-                            <a class="links" href="/editar/{{ usuario.id }}">Editar</a>
-                            <a class="links" href="/deletar/{{ usuario.id }}">Deletar</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        <a class="botao-cadastro" href="/">Cadastrar Novo Usuário</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>
+                        <a class="links" href="/editar/{{ usuario.id }}">Editar</a>
+                        <a class="links" href="/deletar/{{ usuario.id }}">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Programação Funcional em Python</h2>
         
+        <div class="funcional-container">
+            <!-- Funções Puras -->
+            <div class="funcional-card">
+                <div class="card-header">
+                    <i class='bx bx-duplicate'></i>
+                    <h3>Funções Puras</h3>
+                </div>
+                <div class="card-body">
+                    <p>Funções que não alteram estado externo, não têm efeitos colaterais e retornam sempre o mesmo resultado para as mesmas entradas, independente do contexto de execução.</p>
+                    <h4>Maiúsculas (para_maiusculo)</h4>
+                    <ul class="resultado">
+                        {% for nome in nomes_maiusculos %}
+                        <li>{{ nome }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="code-header">
+                        <button class="ver-codigo" onclick="toggleCode('codigo-pura')">Ver Código</button>
+                    </div>
+                    <div id="codigo-pura" class="code-container">
+                        <div class="code-title-bar">
+                            <span class="code-title">Função Pura</span>
+                            <span class="language-badge">Python</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line">    <span class="comment"># Função pura que converte texto para maiúsculo</span></span>
+                            <span class="code-line"><span class="keyword">def</span> <span class="function">transformar_maiusculo</span>(<span class="parameter">texto</span>: <span class="type">str</span>) -> <span class="type">str</span>:</span>
+                            <span class="code-line">    <span class="keyword"> return</span> texto.upper()</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operações Map -->
+            <div class="funcional-card">
+                <div class="card-header">
+                    <i class='bx bx-transfer'></i>
+                    <h3>Map</h3>
+                </div>
+                <div class="card-body">
+                    <p>Função de alta ordem que transforma cada elemento de uma coleção aplicando uma função, sem modificar a coleção original e criando uma nova coleção com os resultados.</p>
+                    <h4>Primeira letra dos nome em maiusculo(lambda)</h4>
+                    <ul class="resultado">
+                        {% for nome in nomes_em_titulo %}
+                        <li>{{ nome }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="code-header">
+                        <button class="ver-codigo" onclick="toggleCode('codigo-map')">Ver Código</button>
+                    </div>
+                    <div id="codigo-map" class="code-container">
+                        <div class="code-title-bar">
+                            <span class="code-title">Operação Map</span>
+                            <span class="language-badge">Python</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line"><span class="comment"># Exemplo com map e lambda</span></span>
+                            <span class="code-line">nomes_em_titulo = <span class="keyword">list</span>(<span class="function">map</span>(<span class="keyword">lambda</span> nome: nome.title(), nomes))</span>
+                            <span class="code-line"></span>
+                            <span class="code-line"><span class="comment"># Exemplo com função nomeada</span></span>
+                            <span class="code-line"><span class="keyword">def</span> <span class="function">transformar_titulo</span>(<span class="parameter">texto</span>: <span class="type">str</span>) -> <span class="type">str</span>: <span class="keyword">return</span> texto.title()</span>
+                            <span class="code-line"></span>
+                            <span class="code-line">nomes_em_titulo = <span class="keyword">list</span>(<span class="function">map</span>(transformar_titulo, nomes))</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operações Filter -->
+            <div class="funcional-card">
+                <div class="card-header">
+                    <i class='bx bx-filter'></i>
+                    <h3>Filter</h3>
+                </div>
+                <div class="card-body">
+                    <p>Função de alta ordem que cria uma nova coleção contendo apenas os elementos que atendem a uma condição específica (predicado), permitindo seleção declarativa de dados.</p>
+                    <h4>Nomes com mais de 5 caracteres</h4>
+                    <ul class="resultado">
+                        {% for usuario in nomes_longos %}
+                        <li>{{ usuario.nome }} ({{ usuario.email }})</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="code-header">
+                        <button class="ver-codigo" onclick="toggleCode('codigo-filter')">Ver Código</button>
+                    </div>
+                    <div id="codigo-filter" class="code-container">
+                        <div class="code-title-bar">
+                            <span class="code-title">Operação Filter</span>
+                            <span class="language-badge">Python</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line"><span class="comment"># Filtrando usuários com nomes longos</span></span>
+                            <span class="code-line">nomes_longos = <span class="keyword">list</span>(<span class="function">filter</span>(<span class="keyword">lambda</span> usuario: <span class="function">len</span>(usuario.nome) > <span class="number">5</span>, usuarios))</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operações Reduce -->
+            <div class="funcional-card">
+                <div class="card-header">
+                    <i class='bx bx-collection'></i>
+                    <h3>Reduce</h3>
+                </div>
+                <div class="card-body">
+                    <p>Função de alta ordem que itera sobre uma coleção, acumulando resultados segundo uma função, transformando múltiplos valores em um único valor agregado (fold operation).</p>
+                    <h4>Total de caracteres em todos os nomes</h4>
+                    <div class="resultado-especial">
+                        <span>{{ total_caracteres }} caracteres</span>
+                    </div>
+                    <div class="code-header">
+                        <button class="ver-codigo" onclick="toggleCode('codigo-reduce')">Ver Código</button>
+                    </div>
+                    <div id="codigo-reduce" class="code-container">
+                        <div class="code-title-bar">
+                            <span class="code-title">Operação Reduce</span>
+                            <span class="language-badge">Python</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line"></span>
+                            <span class="code-line"><span class="comment"># Somando comprimentos dos nomes</span></span>
+                            <span class="code-line">total_caracteres = <span class="function">reduce</span>(<span class="keyword">lambda</span> acc, nome: acc + <span class="function">len</span>(nome), nomes, <span class="number">0</span>)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Composição de Funções -->
+            <div class="funcional-card">
+                <div class="card-header">
+                    <i class='bx bx-git-merge'></i>
+                    <h3>Composição de Funções</h3>
+                </div>
+                <div class="card-body">
+                    <p>Técnica que combina duas ou mais funções para criar uma nova função: f(g(x)). O resultado de uma função torna-se a entrada da próxima, permitindo criar operações complexas a partir de funções simples e reutilizáveis.</p>
+                    <h4>Minúsculo → Capitalizado</h4>
+                    <ul class="resultado">
+                        {% for nome in nomes_processados %}
+                        <li>{{ nome }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="code-header">
+                        <button class="ver-codigo" onclick="toggleCode('codigo-composicao')">Ver Código</button>
+                    </div>
+                    <div id="codigo-composicao" class="code-container">
+                        <div class="code-title-bar">
+                            <span class="code-title">Composição de Funções</span>
+                            <span class="language-badge">Python</span>
+                        </div>
+                        <div class="code-content">
+                                                        <span class="code-line">    <span class="comment"># Função de alta ordem para composição de funções (f ∘ g)</span></span>
+
+                            <span class="code-line"><span class="keyword">def</span> <span class="function">compor_funcoes</span>(f, g):</span>
+                            <span class="code-line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(g(x))</span>
+                            <span class="code-line"></span>
+                            <span class="code-line"><span class="comment"># Composição de funções</span></span>
+                            <span class="code-line">titulo_apos_minusculo = <span class="function">compor_funcoes</span>(transformar_titulo, transformar_minusculo)</span>
+                            <span class="code-line">nomes_processados = [titulo_apos_minusculo(nome) <span class="keyword">for</span> nome <span class="keyword">in</span> nomes]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List Comprehension -->
+            <div class="funcional-card">
+                <div class="card-header">
+                    <i class='bx bx-list-ul'></i>
+                    <h3>List Comprehension</h3>
+                </div>
+                <div class="card-body">
+                    <p>Sintaxe concisa para criar novas listas aplicando expressões a cada item de uma coleção, opcionalmente filtrado por condições. Combina map e filter em uma construção elegante e legível, específica de Python.</p>
+                    <h4>Iniciais dos Nomes</h4>
+                    <div class="resultado-especial iniciais">
+                        {% for inicial in iniciais_nomes %}
+                        <span class="inicial">{{ inicial }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="code-header">
+                        <button class="ver-codigo" onclick="toggleCode('codigo-listcomp')">Ver Código</button>
+                    </div>
+                    <div id="codigo-listcomp" class="code-container">
+                        <div class="code-title-bar">
+                            <span class="code-title">List Comprehension</span>
+                            <span class="language-badge">Python</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line">    <span class="comment"># Extrai a primeira letra de cada nome</span></span>
+                            <span class="code-line"><span class="keyword">def</span> <span class="function">extrair_iniciais</span>(nomes):</span>
+                            <span class="code-line">    <span class="keyword">return</span> [nome[0].upper() <span class="keyword">for</span> nome <span class="keyword">in</span> nomes <span class="keyword">if</span> nome]</span>
+                            <span class="code-line"></span>
+                            <span class="code-line"><span class="comment"># Extraindo iniciais dos nomes</span></span>
+                            <span class="code-line">iniciais_nomes = extrair_iniciais(nomes)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="botao-cadastro" href="/">Cadastrar Novo Usuário</a>
     </main>
+
+    <script>
+        function toggleCode(codeId) {
+            const codeElement = document.getElementById(codeId);
+            if (codeElement.style.display === "block") {
+                codeElement.style.display = "none";
+            } else {
+                codeElement.style.display = "block";
+            }
+            
+            // Encontre o botão que foi clicado
+            const button = event.target;
+            if (codeElement.style.display === "block") {
+                button.textContent = "Ocultar Código";
+            } else {
+                button.textContent = "Ver Código";
+            }
+        }
+    </script>
 </body>
 </html>

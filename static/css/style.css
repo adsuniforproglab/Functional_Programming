@@ -15,16 +15,18 @@ body{
     background: url('/static/images/representation-user-experience-interface-design.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    padding: 30px 10px;
 }
+
 .container{
     width:420px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.7);
     border:2px solid rgba(225,255,255, .2);
     border-radius:10px;         
     color: #fff;
     padding: 30px 40px;
     box-shadow:rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
-
 }
 
 .container h1{
@@ -38,6 +40,7 @@ body{
     height: 50px;
     margin: 30px 0;                                
 }
+
 .input-box input{
     width: 100%;
     height: 100%;
@@ -49,15 +52,18 @@ body{
     padding: 20px 45px 20px 20px;
     border-radius: 40px;
 }
+
 .input-box input::placeholder{
     color: #e6e1e1;
 }
+
 .input-box i {
     position: absolute;
     right: 20px;
     top:40px;
     font-size: 20px;
 }
+
 .login{
     width: 100%;
     height: 50px;
@@ -79,43 +85,88 @@ body{
 }
 
 .container2{
-    width:750px;
-    background-color: transparent;
-    border:2px solid rgba(225,255,255, .2);
-    border-radius:10px;         
+    width: 95%;
+    max-width: 1500px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(225,255,255, .2);
+    border-radius: 10px;         
     color: #fff;
-    padding: 30px 40px;
-    box-shadow:rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    padding: 25px 30px;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
+
 .container2 h1{
     font-size: 36px;
     text-align: center;
+    margin-bottom: 20px;
 }
+
+.section-title {
+    font-size: 28px;
+    text-align: center;
+    margin: 30px 0;
+    color: #e72baf;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #e72baf;
+}
+
 .table{
-    font-size: 20px;
-    justify-content: space-between;
+    width: 100%;
+    border-collapse: collapse;
     margin: 20px 0;
-    padding: 20px;
 }
-.table td{
-    margin: 20px;
-    padding: 5px;
-    font-size: 15px;
-    
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(225, 255, 255, 0.1);
 }
+
+.table th {
+    background-color: rgba(231, 43, 175, 0.2);
+    color: #e72baf;
+    font-weight: 600;
+}
+
+.table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.code-content {
+    font-size: 12px;
+}
+
 .links{
     text-decoration: none;
-    color: #fff;;
-    cursor: pointer; 
-    margin: 12px;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 14px;
 }
+
 .links:hover{
     color: #e72baf;
-    transition: 0.5s;
+    background-color: rgba(231, 43, 175, 0.1);
 }
+
 .botao-cadastro{
     display:block; 
-    padding: 10px 20px; 
+    padding: 12px 24px; 
     background-color:#fff;
     color: #333;
     border: none; 
@@ -124,12 +175,137 @@ body{
     text-align: center; 
     cursor: pointer; 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin: 20px auto;
+    margin: 30px auto;
     width: fit-content;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
+
 .botao-cadastro:hover{
     background-color: transparent;
-    border: 2px solid  rgba(225,255,255, .2);
+    border: 2px solid rgba(225,255,255, .2);
     color: #fff;
-    transition: 0.5s;
+}
+
+/* Novo estilo para os cartões de programação funcional */
+.funcional-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.funcional-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(225, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(231, 43, 175, 0.7), rgba(0, 0, 0, 0.7));
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(225, 255, 255, 0.1);
+}
+
+.card-header i {
+    font-size: 20px;
+    margin-right: 8px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-body p {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.3;
+}
+
+.card-body h4 {
+    color: #e72baf;
+    font-size: 13px;
+    margin: 10px 0 6px;
+    font-weight: 500;
+}
+
+.resultado {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resultado li {
+    padding: 5px 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 3px;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.resultado li:hover {
+    background-color: rgba(231, 43, 175, 0.15);
+}
+
+.resultado-especial {
+    background-color: rgba(231, 43, 175, 0.15);
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.iniciais {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.inicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(231, 43, 175, 0.7), rgba(100, 100, 255, 0.7));
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container2 {
+        width: 98%;
+        padding: 15px;
+    }
+    
+    .funcional-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .container2 h1 {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
 }
